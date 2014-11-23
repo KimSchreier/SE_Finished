@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <title>Kontakte</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="../bower_components/webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="import.html">
+
+</head>
+<body>
+<style>
+  :host {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+      }
+      #core_scaffold {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+      }
+      #paper_tabs {
+        width: 480px;
+        color: rgb(255, 255, 255);
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 2px;
+        left: 1670px;
+        top: 830px;
+        background-color: rgb(0, 188, 212);
+      }
+      #core_header_panel {
+        background-color: rgb(255, 255, 255);
+      }
+      #core_toolbar {
+        color: rgb(255, 255, 255);
+        background-color: rgb(79, 125, 201);
+      }
+      #core_menu {
+        font-size: 16px;
+      }
+     #core_icon_search {
+         height: 28px;
+         width: 28px;
+         color: white;
+
+        
+    }
+    #search_input {
+        background-color: white;
+        height: 30px;
+        padding: 5px;
+    }
+    #search {
+        top: -25px;
+        width: 170px;
+    }
+
+    #content{
+        padding: 20px;
+    }
+    
+</style>
+    
+    <core-scaffold id="core_scaffold">
+      <core-header-panel mode="seamed" id="core_header_panel" navigation flex>
+        <core-toolbar id="core_toolbar"><core-icon id="core_icon_search" icon="search"></core-icon><div id="search_input"><paper-input id="search" ></paper-input></div></core-toolbar>
+        <core-menu selected="Favorite" valueattr="label" selectedindex="1" id="core_menu" theme="core-light-theme">
+          <core-item id="core_item" icon="view-list" label="All" horizontal center layout></core-item>
+          <core-item id="core_item1" icon="favorite" label="Favorite" horizontal center layout active></core-item>
+        </core-menu>
+      </core-header-panel>
+      <div id="div" tool>Contacts</div>
+        
+        <div id="content"> 
+            <h1>Test</h1>
+        
+        </div>
+    </core-scaffold>
+    
+
+   
+
+</body>
+    <script>
+    
+    
+    
+    </script>
+</html>
