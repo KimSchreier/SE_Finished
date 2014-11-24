@@ -72,18 +72,20 @@
     
     <core-scaffold id="core_scaffold">
       <core-header-panel mode="seamed" id="core_header_panel" navigation flex>
-        <core-toolbar id="core_toolbar"><core-icon id="core_icon_search" icon="search"></core-icon><div id="search_input"><paper-input id="search"></paper-input></div></core-toolbar>
+        <core-toolbar id="core_toolbar">
+            <core-icon id="core_icon_search" icon="search"></core-icon>
+            <div id="search_input"><paper-input id="search"></paper-input></div>
+          </core-toolbar>
         <core-menu selected="All" valueattr="label" selectedindex="0" id="core_menu" theme="core-light-theme">
           <core-item id="core_item" icon="view-list" label="All" horizontal center layout on-tap="{{view_all}}"></core-item>
           <core-item id="core_item1" icon="favorite" label="Favorite" horizontal center layout on-tap="{{view_favored}}"></core-item>
         </core-menu>
       </core-header-panel>
-      <div id="div" tool>Contacts</div>
+      <div id="div" tool>{{heading}}</div>
         
         <div id="content"> 
             
                <div id="all" >
-                    <h1>All Contacts</h1>
                     <template repeat="{{contact in contacts}}">
                         <contact-card name="{{contact.name}}" 
                                       phone="{{contact.phone}}" 
@@ -97,10 +99,6 @@
 
 
             <div id="favored">
-                <h1>Favored Contacts</h1>
-            
-
-             
                 <template repeat="{{contact in contacts}}" >
                    <template if="{{contact.favored === 'true'}}">
                         <contact-card name="{{contact.name}}" 
@@ -121,7 +119,7 @@
 
     Polymer({
         ready: function(){
-            
+            this.heading = "All Contacts",
             this.contacts = [{ name: "Kim Schreier", phone: "019310719827", group: "Self", favored: "false", icon: "" },
                              { name: "Dominik Klotz", phone: "015470036969", group: "Friends", favored: "true", icon: "" },
                              { name: "Henning Janssen", phone: "015370685682", group: "Friends", favored: "true", icon: "" },
@@ -132,7 +130,6 @@
                              { name: "Lukas Feldmann", phone: "015585421936", group: "Friends", favored: "true", icon: "" },
                              { name: "Peter Müller", phone: "012097659160", group: "Work", favored: "false", icon: "" }
                             ],
-                
             this.contacts.forEach(function(contact){
                if(contact.favored == 'true'){contact.icon = "favorite"}
                else {contact.icon = "favorite-outline"};
@@ -141,13 +138,13 @@
             this.view_favored = function (){
                 this.$.favored.style.display = 'block';
                 this.$.all.style.display = 'none';
+                this.heading = "Favorite Contacts";
             },
             this.view_all = function (){
                 this.$.favored.style.display = 'none';
                 this.$.all.style.display = 'block';
+                this.heading = "All Contacts";
             }
-                                  
-            
         },
         handleFavorite: function(event, detail, sender){
                 var card = sender.templateInstance.model.contact; 
@@ -160,14 +157,6 @@
                     card.icon = "favorite-outline"; 
                     card.favored = "false";
                 }
-               
             },
-         
-        
-        
-        
     });
-
-    
-    
     </script>
